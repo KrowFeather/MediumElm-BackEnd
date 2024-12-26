@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: medium-elm
+  datasource:
+    url: jdbc:mysql://localhost:3306/MyElm&allowMultiQueries=true
+    username: root
+    password: 123456
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:${server.port}/auth/jwk
+springdoc:
+  swagger-ui:
+    path: /doc/ui
+  api-docs:
+    path: /doc/json
+server:
+  port: 8088
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
