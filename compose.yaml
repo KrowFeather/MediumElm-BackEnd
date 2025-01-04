@@ -8,43 +8,9 @@ services:
       - 'MYSQL_USER=myuser'
     ports:
       - '3306:3306'
-  namesrv:
-    image: apache/rocketmq:5.3.1
-    container_name: rmqnamesrv
-    ports:
-      - 9876:9876
-    networks:
-      - rocketmq
-    command: sh mqnamesrv
-  broker:
-    image: apache/rocketmq:5.3.1
-    container_name: rmqbroker
-    ports:
-      - 10909:10909
-      - 10911:10911
-      - 10912:10912
+  redis:
+    image: 'redis:latest'
     environment:
-      - NAMESRV_ADDR=rmqnamesrv:9876
-    depends_on:
-      - namesrv
-    networks:
-      - rocketmq
-    command: sh mqbroker
-  proxy:
-    image: apache/rocketmq:5.3.1
-    container_name: rmqproxy
-    networks:
-      - rocketmq
-    depends_on:
-      - broker
-      - namesrv
+      - 'REDIS_PASSWORD=12345678'
     ports:
-      - 8080:8080
-      - 8081:8081
-    restart: on-failure
-    environment:
-      - NAMESRV_ADDR=rmqnamesrv:9876
-    command: sh mqproxy
-networks:
-  rocketmq:
-    driver: bridge
+      - '6379:6379'

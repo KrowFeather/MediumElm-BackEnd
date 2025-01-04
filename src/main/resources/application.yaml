@@ -5,23 +5,31 @@ spring:
     url: jdbc:mysql://localhost:3306/MyElm&allowMultiQueries=true
     username: root
     password: 123456
-  jpa:
-    hibernate:
-      ddl-auto: update
-    open-in-view: false
   security:
-    oauth2:
-      resourceserver:
-        jwt:
-          jwk-set-uri: http://localhost:${server.port}/auth/jwk
+    filter:
+      order: -100
+    jwt:
+      key: abcdefghijk
+      expire: 7
+    user:
+      name: root
+      password: 123456
+  mail:
+    host: smtp.qq.com
+    username: 2625056626@qq.com
+    password: jommybroiler666
+  rabbitmq:
+    addresses: localhost
+    username: root
+    password: 12345678
+    virtual-host: /
 springdoc:
   swagger-ui:
     path: /doc/ui
   api-docs:
     path: /doc/json
 server:
-  port: 8088
-
+  port: 8080
 pagehelper:
   helper-dialect: mysql
   reasonable: true
