@@ -40,6 +40,7 @@ public class SecurityConfig {
         return http
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/auth/**").permitAll()
+                        .requestMatchers("/doc/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
