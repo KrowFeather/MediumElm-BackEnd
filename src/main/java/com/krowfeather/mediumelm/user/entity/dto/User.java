@@ -20,10 +20,9 @@ public class User implements BaseData {
     String username;
     @TableField("password")
     String password;
-    @TableField("email")
-    String email;
     @TableField("role")
     String role;
     @TableField("register_time")
     Date registerTime;
+    Double money;
 }

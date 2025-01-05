@@ -8,4 +8,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, Activity> implements ActivityService {
+    private final ActivityMapper activityMapper;
+
+    public ActivityServiceImpl(ActivityMapper activityMapper) {
+        this.activityMapper = activityMapper;
+    }
 }

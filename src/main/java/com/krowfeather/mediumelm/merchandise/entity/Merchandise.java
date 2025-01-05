@@ -14,6 +14,5 @@ public class Merchandise extends BaseEntity {
     private String menuId;
     private Integer soldout;
     private Double rate;
-    private Double discount;
     private String icon;
 }

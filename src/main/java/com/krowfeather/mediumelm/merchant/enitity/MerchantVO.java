@@ -1,19 +1,20 @@
 package com.krowfeather.mediumelm.merchant.enitity;
 
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.krowfeather.mediumelm.common.BaseEntity;
+import com.krowfeather.mediumelm.activity.entity.Activity;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-@TableName("merchant")
-@EqualsAndHashCode(callSuper = false)
+import java.util.List;
+
 @Data
-public class Merchant extends BaseEntity {
+public class MerchantVO {
+    private String id;
     private String name;
     private Integer deliveryStart;
     private Double deliveryFee;
     private Double rate;
     private Double distance;
+    private Integer soldout;
     private String icon;
     private String banner;
+    private List<Activity> activities;
 }
